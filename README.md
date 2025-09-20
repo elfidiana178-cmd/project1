@@ -23,7 +23,7 @@ Task Manager is an open-source Laravel application designed to simplify the proc
 
 ### Step 1: Clone the Repository
 ```
-git clone https://github.com/arafat-web/Task-Manager.git
+git clone https://github.com/elfidiana178-cmd/project1.git
 cd Task-Manager
 ```
 
@@ -62,7 +62,7 @@ Task Manager allows users to efficiently manage projects and tasks through a use
 1. **Login to the admin panel:**
     ```
     Email: admin@example.com
-    Password: secret
+    Password: anjayyy
     ```
 
 2. **Projects:**
