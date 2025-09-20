@@ -197,7 +197,7 @@
         <footer class="mt-auto py-3 text-center">
             <div class="container">
                 <span class="text-muted">&copy; {{ date('Y') }} Task Manager | Developed by <a
-                        href="https://github.com/arafat-web" target="_blank">Arafat Hossain Ar</a> </span>
+                        href="https://github.com/bangkah" target="_blank">Atha</a> </span>
             </div>
         </footer>
     </div>

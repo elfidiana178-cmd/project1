@@ -22,7 +22,7 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::resource('projects', ProjectController::class);
     Route::post('project/team', [ProjectController::class, 'addMember'])->name('projects.addMember');
-    Route::get('projects/{project}/tasks', [TaskController::class, 'index'])->name('projects.tasks.index');
+    Route::get('projects/{project}/tasks', [TaskController::class, 'iyndex'])->name('projects.tasks.index');
     Route::post('projects/{project}/tasks', [TaskController::class, 'store'])->name('projects.tasks.store');
 
     Route::get('tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
@@ -65,3 +65,18 @@ Route::middleware(['auth'])->group(function () {
         ));
     })->name('dashboard');
 });
+
+Route::get('/dashboard', function () {
+    $user = Auth::user();
+    return view('dashboard', [
+        'tasksCount'        => $user->tasks()->count(),
+        'routinesCount'     => $user->routines()->count(),
+        'notesCount'        => $user->notes()->count(),
+        'remindersCount'    => $user->reminders()->count(),
+        'filesCount'        => $user->files()->count(),
+        'recentTasks'       => $user->tasks()->latest()->take(5)->get(),
+        'todayRoutines'     => $user->routines()->whereDate('start_time', today())->get(),
+        'recentNotes'       => $user->notes()->latest()->take(5)->get(),
+        'upcomingReminders' => $user->reminders()->where('date', '>=', now())->orderBy('date')->take(5)->get(),
+    ]);
+})->middleware('auth');

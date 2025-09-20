@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Task Manager</title>
+    <title>Selamat Datang di Task Manager</title>
     <link rel="shortcut icon" href="{{ asset('assets/img/logo-circle.png') }}" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,30 +75,49 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" id="password" class="form-control" required>
+                            <label for="password" class="form-label">Kata Sandi</label>
+                            <div class="input-group">
+                                <input type="password" name="password" id="password" class="form-control" required>
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword" tabindex="-1">
+                                    <i class="bi bi-eye" id="iconPassword"></i>
+                                </button>
+                            </div>
                             @error('password')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" name="remember" id="remember" class="form-check-input">
-                            <label for="remember" class="form-check-label">Remember Me</label>
+                            <label for="remember" class="form-check-label">Ingat Saya</label>
                         </div>
                         <div class="d-grid mb-4">
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="submit" class="btn btn-primary">Masuk</button>
                         </div>
                     </form>
                 </div>
 
-                <div class="card-footer text-center">
-                   <p>Developed by: <a class="text-decoration-none text-black" href="https://github.com/arafat-web" target="_blank">Arafat Hossain Ar</a></p>
-                </div>
+                     <div class="card-footer text-center">
+                         <p>Dikembangkan oleh: <a class="text-decoration-none text-black" href="https://github.com/Bangkah" target="_blank">Ultraman</a></p>
+                     </div>
             </div>
         </div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.js"></script>
+<script>
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+    const iconPassword = document.getElementById('iconPassword');
+    if(togglePassword) {
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            iconPassword.classList.toggle('bi-eye');
+            iconPassword.classList.toggle('bi-eye-slash');
+        });
+    }
+</script>
 </body>
 </html>
